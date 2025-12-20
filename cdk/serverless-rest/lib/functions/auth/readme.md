@@ -1,0 +1,1 @@
+add cognito authorizer and private route here. 
