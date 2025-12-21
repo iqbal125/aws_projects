@@ -1,0 +1,1 @@
+Standalone RDS or AURORA public DB. CDK
