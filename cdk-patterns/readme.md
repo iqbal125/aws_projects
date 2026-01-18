@@ -1,1 +1,1 @@
-Standalone RDS or AURORA public DB. CDK
+Patterns for common use cases and archetectures
