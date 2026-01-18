@@ -10,6 +10,11 @@
     "destroy": "cdk destroy --all --force",
     "deploy": "npm run build && cdk deploy --require-approval never"
   },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.0.0",
+    "@aws-sdk/lib-dynamodb": "^3.0.0",
+    "@types/aws-lambda": "^8.10.0"
+  },
   "devDependencies": {
     "@types/jest": "^30",
     "@types/node": "^20.19.24",

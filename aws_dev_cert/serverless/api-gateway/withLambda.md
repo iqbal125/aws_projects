@@ -12,8 +12,6 @@ https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lamb
 
 
 Integration errors
-
-
 https://docs.aws.amazon.com/apigateway/latest/developerguide/limits.html
 
 https://aws.amazon.com/about-aws/whats-new/2017/11/customize-integration-timeouts-in-amazon-api-gateway/
