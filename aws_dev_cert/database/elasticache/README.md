@@ -4,6 +4,7 @@ Fully managed in-memory caching service supporting Redis and Memcached. Improves
 
 https://tutorialsdojo.com/amazon-elasticache/
 
+https://aws.amazon.com/elasticache/redis-vs-memcached/
 
 ## Caching Strategies
 

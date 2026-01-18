@@ -5,8 +5,6 @@ Managed service for creating and controlling encryption keys used to encrypt dat
 
 
 
-
-
 Deny all requests that don't include SSE-KMS S3 encryption
 
 {
@@ -26,3 +24,7 @@ Deny all requests that don't include SSE-KMS S3 encryption
       }
    ]
 }
+
+
+https://docs.aws.amazon.com//kms/latest/developerguide/concepts.html#key-mgmt
+
