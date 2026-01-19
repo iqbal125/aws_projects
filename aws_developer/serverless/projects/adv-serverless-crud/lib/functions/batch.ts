@@ -6,6 +6,11 @@ import { randomUUID } from 'crypto';
 const client = new DynamoDBClient({});
 const ddb = DynamoDBDocumentClient.from(client);
 
+// add conditional batch updates
+// https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/BestPractices_ConditionalBatchUpdate.html 
+// https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/BestPractices_EfficientBulkOperations.html 
+
+
 // Handler for batch write operations
 export const batchWriteHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
     try {

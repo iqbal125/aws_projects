@@ -2,8 +2,12 @@
 
 
 
-Understand provisioned RCUs WCU, provisioned for Indexes
 
-WarmThroughput
 
-Strong vs Eventual Consistancy
+
+
+
+
+
+
+Provisioned Throughoutput: Solve with reduce requests and exponential backoff
