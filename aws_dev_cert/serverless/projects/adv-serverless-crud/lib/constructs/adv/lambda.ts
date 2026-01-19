@@ -9,6 +9,17 @@ export interface LambdaConstructProps {
     table: dynamodb.Table;
 }
 
+// Define function paths as constants
+const FUNCTIONS_DIR = path.join(__dirname, '../../functions');
+const FUNCTION_HANDLERS = {
+    create: path.join(FUNCTIONS_DIR, 'CRUD/create.ts'),
+    get: path.join(FUNCTIONS_DIR, 'CRUD/get.ts'),
+    update: path.join(FUNCTIONS_DIR, 'CRUD/update.ts'),
+    delete: path.join(FUNCTIONS_DIR, 'CRUD/delete.ts'),
+    list: path.join(FUNCTIONS_DIR, 'CRUD/list.ts'),
+    seed: path.join(FUNCTIONS_DIR, 'seed.ts'),
+} as const;
+
 export class LambdaConstruct extends Construct {
     public readonly createFunction: NodejsFunction;
     public readonly getFunction: NodejsFunction;
@@ -34,37 +45,37 @@ export class LambdaConstruct extends Construct {
         // Create Todo Lambda
         this.createFunction = new NodejsFunction(this, 'CreateTodo', {
             ...commonProps,
-            entry: path.join(__dirname, '../functions/create.ts')
+            entry: FUNCTION_HANDLERS.create
         });
 
         // Get Todo Lambda
         this.getFunction = new NodejsFunction(this, 'GetTodo', {
             ...commonProps,
-            entry: path.join(__dirname, '../functions/get.ts')
+            entry: FUNCTION_HANDLERS.get
         });
 
         // Update Todo Lambda
         this.updateFunction = new NodejsFunction(this, 'UpdateTodo', {
             ...commonProps,
-            entry: path.join(__dirname, '../functions/update.ts')
+            entry: FUNCTION_HANDLERS.update
         });
 
         // Delete Todo Lambda
         this.deleteFunction = new NodejsFunction(this, 'DeleteTodo', {
             ...commonProps,
-            entry: path.join(__dirname, '../functions/delete.ts')
+            entry: FUNCTION_HANDLERS.delete
         });
 
         // List Todos Lambda
         this.listFunction = new NodejsFunction(this, 'ListTodos', {
             ...commonProps,
-            entry: path.join(__dirname, '../functions/list.ts')
+            entry: FUNCTION_HANDLERS.list
         });
 
         // Seed Database Lambda
         this.seedFunction = new NodejsFunction(this, 'SeedDatabase', {
             ...commonProps,
-            entry: path.join(__dirname, '../functions/seed.ts')
+            entry: FUNCTION_HANDLERS.seed
         });
 
         // Grant DynamoDB permissions to Lambda functions

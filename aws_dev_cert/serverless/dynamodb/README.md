@@ -16,3 +16,8 @@ DAX
 https://aws.amazon.com/dynamodb/dax
 
 https://aws.amazon.com/caching/aws-caching/
+
+
+
+Using Expressions
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.html

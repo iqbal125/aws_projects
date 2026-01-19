@@ -1,8 +1,8 @@
 import { Construct } from 'constructs';
 // import { VpcConstruct } from './constructs/vpc';
-import { DynamoDBConstruct } from './constructs/dynamodb';
-import { LambdaConstruct } from './constructs/lambda';
-import { ApiGatewayConstruct } from './constructs/api-gateway';
+import { DynamoDBConstruct } from './constructs/basic/dynamodb';
+import { LambdaConstruct } from './constructs/basic/lambda';
+import { ApiGatewayConstruct } from './constructs/basic/api-gateway';
 import { App, Stack, StackProps, CfnOutput } from 'aws-cdk-lib'
 
 

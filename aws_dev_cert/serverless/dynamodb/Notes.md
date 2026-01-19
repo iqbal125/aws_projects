@@ -1,7 +1,9 @@
 
 
 
-Data Modeling and Working With DynamoDb locally:
-https://aws.amazon.com/dynamodb/nosql-workbench/
 
+Understand provisioned RCUs WCU, provisioned for Indexes
 
+WarmThroughput
+
+Strong vs Eventual Consistancy
