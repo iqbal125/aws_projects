@@ -13,14 +13,3 @@ export class BasicApp extends Stack {
 
   }
 }
-
-const app = new App()
-
-new BasicApp(app, 'BasicApp', {
-  // Environment configuration
-  // Uncomment to deploy to specific account/region:
-  // env: { 
-  //   account: process.env.CDK_DEFAULT_ACCOUNT, 
-  //   region: process.env.CDK_DEFAULT_REGION 
-  // },
-});

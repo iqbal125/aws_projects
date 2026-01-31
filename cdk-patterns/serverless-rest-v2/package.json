@@ -1,0 +1,38 @@
+{
+  "name": "basic-crud",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "jest",
+    "destroy": "cdk destroy --all --force",
+    "deploy": "npm run build && cdk deploy --require-approval never"
+  },
+  "dependencies": {
+    "@aws-lambda-powertools/logger": "^2.30.2",
+    "@aws-lambda-powertools/metrics": "^2.30.2",
+    "@aws-lambda-powertools/tracer": "^2.30.2",
+    "@aws-sdk/client-dynamodb": "^3.0.0",
+    "@aws-sdk/lib-dynamodb": "^3.0.0",
+    "@middy/core": "^7.0.2",
+    "@middy/http-error-handler": "^7.0.2",
+    "@middy/http-json-body-parser": "^7.0.2",
+    "@types/aws-lambda": "^8.10.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^30",
+    "@types/node": "^20.19.24",
+    "aws-cdk-lib": "^2.234.1",
+    "constructs": "^10.0.0",
+    "esbuild": "^0.27.2",
+    "jest": "^30",
+    "ts-jest": "^29",
+    "typescript": "~5.9.3"
+  },
+  "peerDependencies": {
+    "aws-cdk-lib": "^2.234.1",
+    "constructs": "^10.0.0"
+  }
+}
