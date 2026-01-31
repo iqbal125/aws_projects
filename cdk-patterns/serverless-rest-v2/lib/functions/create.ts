@@ -59,5 +59,5 @@ const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayPro
 };
 
 export const handler = middy(lambdaHandler)
-    .use(httpJsonBodyParser())
+    .use(httpJsonBodyParser({ disableContentTypeError: true }))
     .use(httpErrorHandler());
