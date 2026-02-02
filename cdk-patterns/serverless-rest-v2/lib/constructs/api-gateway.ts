@@ -8,7 +8,6 @@ export interface ApiGatewayConstructProps {
     updateFunction: lambda.Function;
     deleteFunction: lambda.Function;
     listFunction: lambda.Function;
-    seedFunction: lambda.Function;
 }
 
 export class ApiGatewayConstruct extends Construct {
@@ -49,8 +48,5 @@ export class ApiGatewayConstruct extends Construct {
         // DELETE /todos/{id} - Delete a todo
         todo.addMethod('DELETE', new apigateway.LambdaIntegration(props.deleteFunction));
 
-        // POST /todos/seed - Seed database with dummy data
-        const seed = todos.addResource('seed');
-        seed.addMethod('POST', new apigateway.LambdaIntegration(props.seedFunction));
     }
 }

@@ -1,0 +1,13 @@
+{
+  "name": "k6-load-tests",
+  "version": "1.0.0",
+  "description": "k6 load testing suite for Todo API",
+  "scripts": {
+    "load": "k6 run load/todo_load.js",
+    "load:get": "k6 run load/todo_get.js",
+    "load:post": "k6 run load/todo_post.js",
+    "load:json": "k6 run --out json=results/load.json load/todo_load.js"
+  },
+  "keywords": ["k6", "load-testing", "performance"],
+  "license": "MIT"
+}

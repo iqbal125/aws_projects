@@ -8,7 +8,7 @@ import { Metrics, MetricUnit } from '@aws-lambda-powertools/metrics';
 import middy from '@middy/core';
 import httpJsonBodyParser from '@middy/http-json-body-parser';
 import httpErrorHandler from '@middy/http-error-handler';
-import { Todo, CreateTodoInput } from '../types/todo';
+import { Todo, CreateTodoInput } from '../../types/todo';
 
 const logger = new Logger({ serviceName: 'todoService' });
 const tracer = new Tracer({ serviceName: 'todoService' });

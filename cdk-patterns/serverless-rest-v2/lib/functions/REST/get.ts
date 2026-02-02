@@ -6,7 +6,7 @@ import { Tracer } from '@aws-lambda-powertools/tracer';
 import { Metrics, MetricUnit } from '@aws-lambda-powertools/metrics';
 import middy from '@middy/core';
 import httpErrorHandler from '@middy/http-error-handler';
-import { Todo } from '../types/todo';
+import { Todo } from '../../types/todo';
 
 const logger = new Logger({ serviceName: 'todoService' });
 const tracer = new Tracer({ serviceName: 'todoService' });

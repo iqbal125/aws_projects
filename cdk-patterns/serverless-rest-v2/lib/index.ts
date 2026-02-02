@@ -1,7 +1,7 @@
 import { Construct } from 'constructs';
 // import { VpcConstruct } from './constructs/vpc';
 import { DynamoDBConstruct } from './constructs/dynamodb';
-import { LambdaConstruct } from './constructs/lambda';
+import { LambdaConstruct } from './functions/lambda';
 import { ApiGatewayConstruct } from './constructs/api-gateway';
 import { SqsConstruct } from './constructs/sqs';
 import { App, Stack, StackProps, CfnOutput } from 'aws-cdk-lib'
@@ -24,6 +24,7 @@ export class BasicApp extends Stack {
     // Create Lambda functions
     const lambdas = new LambdaConstruct(this, 'Lambda', {
       table: dynamodb.table,
+      processedTable: dynamodb.processedTable,
       todoEventsQueue: sqs.todoEventsQueue
     });
 
@@ -34,7 +35,6 @@ export class BasicApp extends Stack {
       updateFunction: lambdas.updateFunction,
       deleteFunction: lambdas.deleteFunction,
       listFunction: lambdas.listFunction,
-      seedFunction: lambdas.seedFunction
     });
 
     // Output API endpoint
@@ -46,6 +46,11 @@ export class BasicApp extends Stack {
     new CfnOutput(this, 'TableName', {
       value: dynamodb.table.tableName,
       description: 'DynamoDB Table Name'
+    });
+
+    new CfnOutput(this, 'ProcessedTableName', {
+      value: dynamodb.processedTable.tableName,
+      description: 'Processed Events DynamoDB Table Name'
     });
 
     new CfnOutput(this, 'QueueUrl', {
