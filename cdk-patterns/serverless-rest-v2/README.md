@@ -1,7 +1,7 @@
 # Welcome to your CDK TypeScript Construct Library project
 
 You should explore the contents of this project. It demonstrates a CDK Construct Library that includes a construct (`BasicCrud`)
-which contains an Amazon SQS queue that is subscribed to an Amazon SNS topic.
+
 
 The construct defines an interface (`BasicCrudProps`) to configure the visibility timeout of the queue.
 

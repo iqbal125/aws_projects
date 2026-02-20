@@ -49,9 +49,5 @@ export class BasicApp extends Stack {
       description: 'Processed Events DynamoDB Table Name'
     });
 
-    new CfnOutput(this, 'QueueUrl', {
-      value: sqs.todoEventsQueue.queueUrl,
-      description: 'Todo Events Queue URL'
-    });
   }
 }
