@@ -38,6 +38,15 @@ const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayPro
         Item: item
     }));
 
+    // Send TodoCreated event to SQS
+    await sqsClient.send(new SendMessageCommand({
+        QueueUrl: process.env.QUEUE_URL,
+        MessageBody: JSON.stringify({
+            eventType: 'TodoCreated',
+            timestamp: new Date().toISOString(),
+            data: item
+        })
+    }));
 
     metrics.addMetric('TodoCreated', MetricUnit.Count, 1);
     logger.info('Todo item created successfully', { id });

@@ -3,7 +3,8 @@ import { Construct } from 'constructs';
 import { DynamoDBConstruct } from './constructs/dynamodb';
 import { LambdaConstruct } from './functions/lambda';
 import { ApiGatewayConstruct } from './constructs/api-gateway';
-import { Stack, StackProps, CfnOutput } from 'aws-cdk-lib'
+import { SqsConstruct } from './constructs/sqs';
+import { App, Stack, StackProps, CfnOutput } from 'aws-cdk-lib'
 
 
 export class BasicApp extends Stack {
@@ -17,11 +18,14 @@ export class BasicApp extends Stack {
     // Create DynamoDB table
     const dynamodb = new DynamoDBConstruct(this, 'DynamoDB');
 
+    // Create SQS queue for todo events
+    const sqs = new SqsConstruct(this, 'SQS');
 
     // Create Lambda functions
     const lambdas = new LambdaConstruct(this, 'Lambda', {
       table: dynamodb.table,
       processedTable: dynamodb.processedTable,
+      todoEventsQueue: sqs.todoEventsQueue
     });
 
     // Create API Gateway

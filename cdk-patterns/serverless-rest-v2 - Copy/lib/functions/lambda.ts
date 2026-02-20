@@ -10,6 +10,7 @@ import * as path from 'path';
 export interface LambdaConstructProps {
     table: dynamodb.Table;
     processedTable: dynamodb.Table;
+    todoEventsQueue: sqs.Queue;
 }
 
 export class LambdaConstruct extends Construct {
@@ -25,6 +26,7 @@ export class LambdaConstruct extends Construct {
 
         const commonEnv = {
             TABLE_NAME: props.table.tableName,
+            QUEUE_URL: props.todoEventsQueue.queueUrl,
         };
 
         const commonProps = {
