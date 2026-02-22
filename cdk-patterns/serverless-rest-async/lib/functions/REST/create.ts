@@ -1,6 +1,7 @@
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { DynamoDBDocumentClient, PutCommand } from '@aws-sdk/lib-dynamodb';
-import { SQSClient, SendMessageCommand } from '@aws-sdk/client-sqs';
+import { SendMessageCommand } from '@aws-sdk/client-sqs';
+import { _sqsClient } from '../async/sqsClient';
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { Logger } from '@aws-lambda-powertools/logger';
 import { Tracer } from '@aws-lambda-powertools/tracer';
@@ -17,7 +18,7 @@ const metrics = new Metrics({ namespace: 'TodoApp', serviceName: 'todoService' }
 const dynamoClient = tracer.captureAWSv3Client(new DynamoDBClient({}));
 const ddb = DynamoDBDocumentClient.from(dynamoClient);
 
-const sqsClient = tracer.captureAWSv3Client(new SQSClient({}));
+const sqsClient = tracer.captureAWSv3Client(_sqsClient);
 
 const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
     const body = event.body as unknown as CreateTodoInput;

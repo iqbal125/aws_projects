@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 import { App } from 'aws-cdk-lib';
-import { BasicApp } from '../lib/index';
+import { ServerlessAsyncApp } from '../lib/index';
 
 const app = new App();
 
-new BasicApp(app, 'BasicApp', {
+new ServerlessAsyncApp(app, 'ServerlessAsyncApp', {
     // Environment configuration
     // Uncomment to deploy to specific account/region:
     // env: { 

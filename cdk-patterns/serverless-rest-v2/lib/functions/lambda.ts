@@ -29,13 +29,18 @@ export class LambdaConstruct extends Construct {
             runtime: Runtime.NODEJS_20_X,
             handler: 'handler',
             environment: commonEnv,
-            timeout: Duration.seconds(30)
+            timeout: Duration.seconds(30),
+            bundling: {
+                minify: false,
+                sourceMap: true,
+                sourcesContent: true
+            }
         };
 
         // Create Todo Lambda
         this.createFunction = new NodejsFunction(this, 'CreateTodo', {
             ...commonProps,
-            entry: path.join(__dirname, './REST/create.ts')
+            entry: path.join(__dirname, './REST/create.ts'),
         });
 
         // Get Todo Lambda

@@ -7,7 +7,7 @@ import { SqsConstruct } from './constructs/sqs';
 import { App, Stack, StackProps, CfnOutput } from 'aws-cdk-lib'
 
 
-export class BasicApp extends Stack {
+export class ServerlessAsyncApp extends Stack {
 
   constructor(scope: Construct, id: string, props: StackProps) {
     super(scope, id);

@@ -10,3 +10,13 @@ The construct defines an interface (`BasicCrudProps`) to configure the visibilit
 * `npm run build`   compile typescript to js
 * `npm run watch`   watch for changes and compile
 * `npm run test`    perform the jest unit tests
+
+
+
+
+
+
+
+Run - Hit API gateway endpoint to trigger create workflow 
+
+Create a sqs message when creating a new todo. 
