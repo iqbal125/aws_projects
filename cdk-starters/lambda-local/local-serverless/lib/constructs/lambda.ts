@@ -3,11 +3,14 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
 import { Duration } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-import * as path from 'path';
+import { createCreateFunction } from '../functions/REST/create/index.js';
+import { createGetFunction } from '../functions/REST/get/index.js';
+import { createUpdateFunction } from '../functions/REST/update/index.js';
+import { createDeleteFunction } from '../functions/REST/delete/index.js';
+import { createListFunction } from '../functions/REST/list/index.js';
 
 export interface LambdaConstructProps {
     table: dynamodb.Table;
-    processedTable: dynamodb.Table;
 }
 
 export class LambdaConstruct extends Construct {
@@ -16,7 +19,7 @@ export class LambdaConstruct extends Construct {
     public readonly updateFunction: NodejsFunction;
     public readonly deleteFunction: NodejsFunction;
     public readonly listFunction: NodejsFunction;
-
+    public readonly seedFunction: NodejsFunction;
 
     constructor(scope: Construct, id: string, props: LambdaConstructProps) {
         super(scope, id);
@@ -29,45 +32,14 @@ export class LambdaConstruct extends Construct {
             runtime: Runtime.NODEJS_20_X,
             handler: 'handler',
             environment: commonEnv,
-            timeout: Duration.seconds(30),
-            bundling: {
-                minify: false,
-                sourceMap: true,
-                sourcesContent: true
-
-            }
+            timeout: Duration.seconds(30)
         };
 
-        // Create Todo Lambda
-        this.createFunction = new NodejsFunction(this, 'CreateTodo', {
-            ...commonProps,
-            entry: path.join(__dirname, './REST/create.ts'),
-        });
-
-        // Get Todo Lambda
-        this.getFunction = new NodejsFunction(this, 'GetTodo', {
-            ...commonProps,
-            entry: path.join(__dirname, './REST/get.ts')
-        });
-
-        // Update Todo Lambda
-        this.updateFunction = new NodejsFunction(this, 'UpdateTodo', {
-            ...commonProps,
-            entry: path.join(__dirname, './REST/update.ts')
-        });
-
-        // Delete Todo Lambda
-        this.deleteFunction = new NodejsFunction(this, 'DeleteTodo', {
-            ...commonProps,
-            entry: path.join(__dirname, './REST/delete.ts')
-        });
-
-        // List Todos Lambda
-        this.listFunction = new NodejsFunction(this, 'ListTodos', {
-            ...commonProps,
-            entry: path.join(__dirname, './REST/list.ts')
-        });
-
+        this.createFunction = createCreateFunction(this, 'CreateTodo', commonProps);
+        this.getFunction = createGetFunction(this, 'GetTodo', commonProps);
+        this.updateFunction = createUpdateFunction(this, 'UpdateTodo', commonProps);
+        this.deleteFunction = createDeleteFunction(this, 'DeleteTodo', commonProps);
+        this.listFunction = createListFunction(this, 'ListTodos', commonProps);
 
         // Grant DynamoDB permissions to Lambda functions
         props.table.grantReadWriteData(this.createFunction);
@@ -75,6 +47,5 @@ export class LambdaConstruct extends Construct {
         props.table.grantReadWriteData(this.updateFunction);
         props.table.grantWriteData(this.deleteFunction);
         props.table.grantReadData(this.listFunction);
-
     }
 }
