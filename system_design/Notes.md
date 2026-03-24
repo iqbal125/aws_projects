@@ -22,3 +22,8 @@ Video Processing
 
 Monitoring, Logging and alerts
 
+
+
+
+- Centrailized log management, aws native solution.
+- Splunk, ELK stack
