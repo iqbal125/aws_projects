@@ -6,3 +6,11 @@
 
 
 
+- build ticket master
+
+- build todo and autoscaling
+
+- build e commerce, event processing 
+
+
+
