@@ -1,4 +1,5 @@
 base CDK starters
 
 
-Todo Add default nodejs and docker project for deployment
+
+Add base Nestjs project, integrated Fargate, Local Build and deploy, K6s integration, Backend Only. 
