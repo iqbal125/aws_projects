@@ -1,0 +1,37 @@
+{
+  "name": "cdk-infra",
+  "version": "0.1.0",
+  "nx": {
+    "targets": {
+      "build": {
+        "outputs": ["{projectRoot}/dist/**"],
+        "cache": true
+      }
+    }
+  },
+  "bin": {
+    "cdk-infra": "bin/cdk-infra.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "cdk": "cdk",
+    "synth": "cdk synth",
+    "diff": "cdk diff",
+    "deploy": "cdk deploy --require-approval never",
+    "destroy": "cdk destroy --all --require-approval never"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "aws-cdk": "2.1119.0",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.9.3"
+  },
+  "dependencies": {
+    "@aws-solutions-constructs/aws-cloudfront-s3": "^2.101.0",
+    "@org/frontend-config": "workspace:*",
+    "aws-cdk-lib": "^2.248.0",
+    "constructs": "^10.5.0",
+    "zod": "^4.3.6"
+  }
+}
